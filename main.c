@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdbool.h>
 
 //Definir estrutura para todos os livros
 struct Livro
@@ -104,7 +105,9 @@ int main() {
 
     //5)Mantenha o programa em loop
     char voltar[4];
-    while(strcmp(voltar, "sim") || strcmp(voltar, "Sim") || strcmp(voltar, "SIM")){
+    bool sair = true;
+
+    while(sair){
         //1) Mostrar total de unidades e valor de cada categoria
         printf("Listagem de livros:\n");
         printf("---------------------------- Disponivel --- Vendido --- Codigo --- Valor\n");
@@ -117,8 +120,11 @@ int main() {
 
         //Perguntar se quer sair
         printf("\nGostaria de sair das compras?\n");
-        scanf("%s",voltar); 
-
+        scanf("%s", voltar); 
+        if(!strcmp(voltar, "sim") || !strcmp(voltar, "Sim") || !strcmp(voltar, "SIM")){
+            sair = false;
+            break;
+        }
         //Pegar o assunto do livro desejado
         int idInput;
         printf("\nTendo a tabela em vista, selecione a descricao do assunto do livro que gostaria com base no Codigo:\n");
