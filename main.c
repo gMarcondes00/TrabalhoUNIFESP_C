@@ -19,7 +19,7 @@ struct Livro Quimica;
 struct Livro Computacao;
 
 //2) Mostrar a descrição da categoria
-void desc(id) {
+void desc(int id) {
     //Path Matematica
     FILE *descMat = fopen("matematica.txt", "r");
     fgets(Matematica.descricao, 200, descMat);
@@ -43,22 +43,23 @@ void desc(id) {
 
     switch (id){
         case 1:
-            printf("%s",Matematica.descricao);
+            printf("\n%s\n",Matematica.descricao);
             break;
         case 2:
-            printf("%s",Probabilidade.descricao);
+            printf("\n%s\n",Probabilidade.descricao);
             break;
         case 3:
-            printf("%s",Fisica.descricao);
+            printf("\n%s\n",Fisica.descricao);
             break;
         case 4:
-            printf("%s",Quimica.descricao);
+            printf("\n%s\n",Quimica.descricao);
             break;
         case 5:
-            printf("%s",Computacao.descricao);
+            printf("\n%s\n",Computacao.descricao);
             break;
 
         default:
+            printf("Codigo nao cadastrado!\n");
             break;
     }
     //Caso queira outra descrição
@@ -105,15 +106,15 @@ int main() {
 
     //5)Mantenha o programa em loop
     char voltar[4];
-    bool sair = true;
+    bool ficar = true;
 
-    while(sair){
+    while(ficar){
         //1) Mostrar total de unidades e valor de cada categoria
         printf("Listagem de livros:\n");
         printf("---------------------------- Disponivel --- Vendido --- Codigo --- Valor\n");
 
         printf("Matematica:                      %d             %d        %d      R$%.2f\n", Matematica.disponivel, Matematica.vendido, Matematica.id, Matematica.valor);
-        printf("Probabilidade e estatistica:     %d            %d        %d      R$%.2f\n", Probabilidade.disponivel, Probabilidade.vendido, Probabilidade.id, Probabilidade.valor);
+        printf("Probabilidade e Estatistica:     %d            %d        %d      R$%.2f\n", Probabilidade.disponivel, Probabilidade.vendido, Probabilidade.id, Probabilidade.valor);
         printf("Fisica:                          %d             %d        %d      R$%.2f\n", Fisica.disponivel, Fisica.vendido, Fisica.id, Fisica.valor);
         printf("Quimica:                         %d             %d        %d      R$%.2f\n", Quimica.disponivel, Quimica.vendido, Quimica.id, Quimica.valor);
         printf("Computacao:                      %d             %d        %d      R$%.2f\n\n", Computacao.disponivel, Computacao.vendido, Computacao.id, Computacao.valor);
@@ -122,7 +123,7 @@ int main() {
         printf("\nGostaria de sair das compras?\n");
         scanf("%s", voltar); 
         if(!strcmp(voltar, "sim") || !strcmp(voltar, "Sim") || !strcmp(voltar, "SIM")){
-            sair = false;
+            ficar = false;
             break;
         }
         //Pegar o assunto do livro desejado
@@ -132,9 +133,80 @@ int main() {
         desc(idInput);
         
         //Iniciar processo de compra
-        printf("Gostaria de comprar algum livro?");
-        //scanf("");
-    }
+        int entrarCompra;int idCompra; bool comprar = false; float valorDaCompra; int carrinho = 0;
 
+        printf("Gostaria de entrar na compra? 1 ou 0\n");
+        scanf("%d", &entrarCompra);
+        if(entrarCompra == 1){
+            comprar = true;
+        } 
+        //3)Comprar livros
+        while (comprar){
+            printf("Qual livro gostaria de comprar? Para finalizar a compra, digite 0!\n");
+            scanf("%d", &idCompra);
+            if((idCompra == Matematica.id && Matematica.disponivel <= 0) ||
+               (idCompra == Quimica.id && Quimica.disponivel <= 0) ||
+               (idCompra == Fisica.id && Fisica.disponivel <= 0) ||
+               (idCompra == Probabilidade.id && Probabilidade.disponivel <= 0) ||
+               (idCompra == Computacao.id && Computacao.disponivel <= 0)){
+                printf("O livro referente ao codigo: %d nao esta disponivel\n", idCompra);
+                comprar = false;
+                break;
+            }
+
+            switch (idCompra){
+                case 0:
+                    comprar = false;
+                    break;
+                case 1:
+                    carrinho += 1;
+                    printf("\n%d item(s) no carrinho\n", carrinho);
+                    Matematica.disponivel -= 1;
+                    Matematica.vendido += 1;
+                    valorDaCompra += 150.00;
+                    printf("%d Livros disponiveis de Matematica\n", Matematica.disponivel);
+                    break;
+                case 2:
+                    carrinho += 1;
+                    printf("\n%d item(s) no carrinho\n", carrinho);
+                    Probabilidade.disponivel -= 1;
+                    Probabilidade.vendido += 1;
+                    valorDaCompra += 100.00;
+                    printf("%d Livros disponiveis de Probabilidade e Estatistica\n", Probabilidade.disponivel);
+                    break;
+                case 3:
+                    carrinho += 1;
+                    printf("\n%d item(s) no carrinho\n", carrinho);
+                    Fisica.disponivel -= 1;
+                    Fisica.vendido += 1;
+                    valorDaCompra += 160.00;
+                    printf("%d Livros disponiveis de Fisica\n", Fisica.disponivel);
+                    break;
+                case 4:
+                    carrinho += 1;
+                    printf("\n%d item(s) no carrinho\n", carrinho);
+                    Quimica.disponivel -= 1;
+                    Quimica.vendido += 1;
+                    valorDaCompra += 160.00;
+                    printf("%d Livros disponiveis de Quimica\n", Quimica.disponivel);
+                    break;
+                case 5:
+                    carrinho += 1;
+                    printf("\n%d item(s) no carrinho\n", carrinho);
+                    Computacao.disponivel -= 1;
+                    Computacao.vendido += 1;
+                    valorDaCompra += 200.00;
+                    printf("%d Livros disponiveis de Computacao\n", Computacao.disponivel);
+                    break;
+                
+                default:
+                    printf("Selecione um valor valido!");
+                    break;
+        }}
+            //4)Total vendido e montante em caixa
+            printf("\n\n%d item(s) vendidos, com valor atual em caixa de: R$%.2f\n\n", carrinho, valorDaCompra);
+
+            
+    }
     return 0;
 }
