@@ -118,14 +118,7 @@ int main() {
         printf("Fisica:                          %d             %d        %d      R$%.2f\n", Fisica.disponivel, Fisica.vendido, Fisica.id, Fisica.valor);
         printf("Quimica:                         %d             %d        %d      R$%.2f\n", Quimica.disponivel, Quimica.vendido, Quimica.id, Quimica.valor);
         printf("Computacao:                      %d             %d        %d      R$%.2f\n\n", Computacao.disponivel, Computacao.vendido, Computacao.id, Computacao.valor);
-
-        //Perguntar se quer sair
-        printf("\nGostaria de sair das compras?\n");
-        scanf("%s", voltar); 
-        if(!strcmp(voltar, "sim") || !strcmp(voltar, "Sim") || !strcmp(voltar, "SIM")){
-            ficar = false;
-            break;
-        }
+        
         //Pegar o assunto do livro desejado
         int idInput;
         printf("\nTendo a tabela em vista, selecione a descricao do assunto do livro que gostaria com base no Codigo:\n");
@@ -135,14 +128,14 @@ int main() {
         //Iniciar processo de compra
         int entrarCompra;int idCompra; bool comprar = false; float valorDaCompra; int carrinho = 0;
 
-        printf("Gostaria de entrar na compra? 1 ou 0\n");
+        printf("\nGostaria de entrar na compra? 1 ou 0\n");
         scanf("%d", &entrarCompra);
         if(entrarCompra == 1){
             comprar = true;
         } 
         //3)Comprar livros
         while (comprar){
-            printf("Qual livro gostaria de comprar? Para finalizar a compra, digite 0!\n");
+            printf("\nQual livro gostaria de comprar? Para finalizar a compra, digite 0!\n");
             scanf("%d", &idCompra);
             if((idCompra == Matematica.id && Matematica.disponivel <= 0) ||
                (idCompra == Quimica.id && Quimica.disponivel <= 0) ||
@@ -203,10 +196,22 @@ int main() {
                     printf("Selecione um valor valido!");
                     break;
         }}
+        // Encerrar loop
+        printf("\nGostaria de sair das compras?\n");
+        scanf("%s", voltar); 
+        if(!strcmp(voltar, "sim") || !strcmp(voltar, "Sim") || !strcmp(voltar, "SIM")){
+            ficar = false;
+            break;
+        }
             //4)Total vendido e montante em caixa
-            printf("\n\n%d item(s) vendidos, com valor atual em caixa de: R$%.2f\n\n", carrinho, valorDaCompra);
-
-            
+            int senha;
+            printf("Forneca a senha para ter acesso ao caixa\n");
+            scanf("%d", &senha);
+            if(senha == 123){
+                printf("\n\n%d item(s) vendidos, com valor atual em caixa de: R$%.2f\n\n", carrinho, valorDaCompra);
+            } else {
+                printf("\n\nSenha incorreta!\n\n");
+            }
     }
     return 0;
 }
