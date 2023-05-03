@@ -1,1 +1,3 @@
-amo a mi
+    "Calculo - Volume 1" - Livro de calculo principalmente utilizado para aprender limite, derivada e integral.
+    "Geometria Analitica" - Livro com abordagens de geometria analitica.
+    "Algebra Linear com Aplicacoes" - Teoria da algebra linear, utilizado muito em engenharia e computacao.

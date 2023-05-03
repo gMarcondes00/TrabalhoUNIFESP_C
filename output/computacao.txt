@@ -1,1 +1,2 @@
-wwwww
+    "Algoritmos e Estruturas de Dados" - Livro que aborda principais temas de algoritmos e estrutura de dados, com temas e teorias modernas.
+    "Introducao a Programacao em C" - Livro que aborda a linguagem de programacao em C, ensinando desde e os conceitos mais basicos ate os conceitos mais complexos.

@@ -22,40 +22,51 @@ struct Livro Computacao;
 void desc(int id) {
     //Path Matematica
     FILE *descMat = fopen("matematica.txt", "r");
-    fgets(Matematica.descricao, 200, descMat);
-    fclose(descMat);
+    
     //Path Probabilidade e estatistica
     FILE *descProb = fopen("probabilidade.txt", "r");
-    fgets(Probabilidade.descricao, 200, descProb);
-    fclose(descProb);
+    
+    
     //Path Fisica
     FILE *descFis = fopen("fisica.txt", "r");
-    fgets(Fisica.descricao, 200, descFis);
-    fclose(descFis);
+    
     //Path Quimica
     FILE *descQuim = fopen("quimica.txt", "r");
-    fgets(Quimica.descricao, 200, descQuim);
-    fclose(descQuim);
+
     //Path Computação
     FILE *descComp = fopen("computacao.txt", "r");
-    fgets(Computacao.descricao, 200, descComp);
-    fclose(descComp);
+    
 
     switch (id){
         case 1:
-            printf("\n%s\n",Matematica.descricao);
+            while(fgets(Matematica.descricao, 200, descMat) != NULL){
+                printf("\n%s\n",Matematica.descricao);
+            };
+            fclose(descMat);
             break;
         case 2:
+            while(fgets(Probabilidade.descricao, 200, descProb)){
             printf("\n%s\n",Probabilidade.descricao);
+            };
+            fclose(descProb);
             break;
         case 3:
+            while(fgets(Fisica.descricao, 200, descFis)){
             printf("\n%s\n",Fisica.descricao);
+            };
+            fclose(descFis);
             break;
         case 4:
+            while(fgets(Quimica.descricao, 200, descQuim)){
             printf("\n%s\n",Quimica.descricao);
+            };
+            fclose(descQuim);    
             break;
         case 5:
+            while(fgets(Computacao.descricao, 200, descComp)){
             printf("\n%s\n",Computacao.descricao);
+            };
+            fclose(descComp);
             break;
 
         default:
@@ -67,7 +78,7 @@ void desc(int id) {
     printf("\nGostaria de ver outra descricao?\n");
     scanf("%s",voltar);
     if(!strcmp(voltar, "sim") || !strcmp(voltar, "Sim") || !strcmp(voltar, "SIM")){
-        printf("Qual descricao?");
+        printf("\nQual descricao?\n");
         scanf("%d", &idInput2);
         desc(idInput2);
     } 

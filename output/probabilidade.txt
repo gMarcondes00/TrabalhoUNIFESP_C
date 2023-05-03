@@ -1,1 +1,2 @@
-rock
+    "Estatistica Basica" - Livro que aborda os principais temas da estatistica como regressao linear e analise de series temporais.
+    "Probabilidade e Estatistica" - Livro que aborda a resolucao de problemas envolvendo probabilidade bem como o teste de hipoteses por meio da estatistica.
