@@ -167,7 +167,7 @@ int main() {
                     printf("\n%d item(s) no carrinho\n", carrinho);
                     Matematica.disponivel -= 1;
                     Matematica.vendido += 1;
-                    valorDaCompra += 150.00;
+                    valorDaCompra += Matematica.valor;
                     printf("%d Livros disponiveis de Matematica\n", Matematica.disponivel);
                     break;
                 case 2:
@@ -175,7 +175,7 @@ int main() {
                     printf("\n%d item(s) no carrinho\n", carrinho);
                     Probabilidade.disponivel -= 1;
                     Probabilidade.vendido += 1;
-                    valorDaCompra += 100.00;
+                    valorDaCompra += Probabilidade.valor;
                     printf("%d Livros disponiveis de Probabilidade e Estatistica\n", Probabilidade.disponivel);
                     break;
                 case 3:
@@ -183,7 +183,7 @@ int main() {
                     printf("\n%d item(s) no carrinho\n", carrinho);
                     Fisica.disponivel -= 1;
                     Fisica.vendido += 1;
-                    valorDaCompra += 160.00;
+                    valorDaCompra += Fisica.valor;
                     printf("%d Livros disponiveis de Fisica\n", Fisica.disponivel);
                     break;
                 case 4:
@@ -191,7 +191,7 @@ int main() {
                     printf("\n%d item(s) no carrinho\n", carrinho);
                     Quimica.disponivel -= 1;
                     Quimica.vendido += 1;
-                    valorDaCompra += 160.00;
+                    valorDaCompra += Quimica.valor;
                     printf("%d Livros disponiveis de Quimica\n", Quimica.disponivel);
                     break;
                 case 5:
@@ -199,7 +199,7 @@ int main() {
                     printf("\n%d item(s) no carrinho\n", carrinho);
                     Computacao.disponivel -= 1;
                     Computacao.vendido += 1;
-                    valorDaCompra += 200.00;
+                    valorDaCompra += Computacao.valor;
                     printf("%d Livros disponiveis de Computacao\n", Computacao.disponivel);
                     break;
                 
@@ -207,6 +207,15 @@ int main() {
                     printf("Selecione um valor valido!");
                     break;
         }}
+        //4)Total vendido e montante em caixa
+        int senha;
+        printf("Forneca a senha para ter acesso ao caixa\n");
+        scanf("%d", &senha);
+        if(senha == 123){
+            printf("\n\n%d item(s) vendidos, com valor atual em caixa de: R$%.2f\n\n", carrinho, valorDaCompra);
+        } else {
+                printf("\n\nSenha incorreta!\n\n");
+        }
         // Encerrar loop
         printf("\nGostaria de sair das compras?\n");
         scanf("%s", voltar); 
@@ -214,15 +223,6 @@ int main() {
             ficar = false;
             break;
         }
-            //4)Total vendido e montante em caixa
-            int senha;
-            printf("Forneca a senha para ter acesso ao caixa\n");
-            scanf("%d", &senha);
-            if(senha == 123){
-                printf("\n\n%d item(s) vendidos, com valor atual em caixa de: R$%.2f\n\n", carrinho, valorDaCompra);
-            } else {
-                printf("\n\nSenha incorreta!\n\n");
-            }
     }
     return 0;
 }
