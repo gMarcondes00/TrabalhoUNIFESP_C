@@ -45,25 +45,25 @@ void desc(int id) {
             fclose(descMat);
             break;
         case 2:
-            while(fgets(Probabilidade.descricao, 200, descProb)){
+            while(fgets(Probabilidade.descricao, 200, descProb) != NULL){
             printf("\n%s\n",Probabilidade.descricao);
             };
             fclose(descProb);
             break;
         case 3:
-            while(fgets(Fisica.descricao, 200, descFis)){
+            while(fgets(Fisica.descricao, 200, descFis) != NULL){
             printf("\n%s\n",Fisica.descricao);
             };
             fclose(descFis);
             break;
         case 4:
-            while(fgets(Quimica.descricao, 200, descQuim)){
+            while(fgets(Quimica.descricao, 200, descQuim) != NULL){
             printf("\n%s\n",Quimica.descricao);
             };
             fclose(descQuim);    
             break;
         case 5:
-            while(fgets(Computacao.descricao, 200, descComp)){
+            while(fgets(Computacao.descricao, 200, descComp) != NULL){
             printf("\n%s\n",Computacao.descricao);
             };
             fclose(descComp);
