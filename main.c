@@ -137,7 +137,7 @@ int main() {
         desc(idInput);
         
         //Iniciar processo de compra
-        int entrarCompra;int idCompra; bool comprar = false; float valorDaCompra; int carrinho = 0;
+        int entrarCompra;int idCompra; bool comprar = false; float valorDaCompra; int carrinho = 0;int qntLiv;
 
         printf("\nGostaria de entrar na compra? 1 ou 0\n");
         scanf("%d", &entrarCompra);
@@ -148,12 +148,15 @@ int main() {
         while (comprar){
             printf("\nQual livro gostaria de comprar? Para finalizar a compra, digite 0!\n");
             scanf("%d", &idCompra);
-            if((idCompra == Matematica.id && Matematica.disponivel <= 0) ||
-               (idCompra == Quimica.id && Quimica.disponivel <= 0) ||
-               (idCompra == Fisica.id && Fisica.disponivel <= 0) ||
-               (idCompra == Probabilidade.id && Probabilidade.disponivel <= 0) ||
-               (idCompra == Computacao.id && Computacao.disponivel <= 0)){
-                printf("O livro referente ao codigo: %d nao esta disponivel\n", idCompra);
+            printf("Quantos livros?\n");
+            scanf("%d", &qntLiv);
+            if((idCompra == Matematica.id && Matematica.disponivel < qntLiv) ||
+               (idCompra == Quimica.id && Quimica.disponivel < qntLiv) ||
+               (idCompra == Fisica.id && Fisica.disponivel < qntLiv) ||
+               (idCompra == Probabilidade.id && Probabilidade.disponivel < qntLiv) ||
+               (idCompra == Computacao.id && Computacao.disponivel < qntLiv)){
+                printf("Venda nao efetuada...");
+                printf("O livro referente ao codigo: %d nao esta disponivel em %d unidades\n", idCompra, qntLiv);
                 comprar = false;
                 break;
             }
@@ -163,43 +166,43 @@ int main() {
                     comprar = false;
                     break;
                 case 1:
-                    carrinho += 1;
-                    printf("\n%d item(s) no carrinho\n", carrinho);
-                    Matematica.disponivel -= 1;
-                    Matematica.vendido += 1;
-                    valorDaCompra += Matematica.valor;
+                    carrinho += qntLiv;
+                    printf("Venda efetivada!");
+                    Matematica.disponivel -= qntLiv;
+                    Matematica.vendido += qntLiv;
+                    valorDaCompra += Matematica.valor * qntLiv;
                     printf("%d Livros disponiveis de Matematica\n", Matematica.disponivel);
                     break;
                 case 2:
-                    carrinho += 1;
-                    printf("\n%d item(s) no carrinho\n", carrinho);
-                    Probabilidade.disponivel -= 1;
-                    Probabilidade.vendido += 1;
-                    valorDaCompra += Probabilidade.valor;
+                    carrinho += qntLiv;
+                    printf("Venda efetivada!");
+                    Probabilidade.disponivel -= qntLiv;
+                    Probabilidade.vendido += qntLiv;
+                    valorDaCompra += Probabilidade.valor * qntLiv;
                     printf("%d Livros disponiveis de Probabilidade e Estatistica\n", Probabilidade.disponivel);
                     break;
                 case 3:
-                    carrinho += 1;
-                    printf("\n%d item(s) no carrinho\n", carrinho);
-                    Fisica.disponivel -= 1;
-                    Fisica.vendido += 1;
-                    valorDaCompra += Fisica.valor;
+                    carrinho += qntLiv;
+                    printf("Venda efetivada!");
+                    Fisica.disponivel -= qntLiv;
+                    Fisica.vendido += qntLiv;
+                    valorDaCompra += Fisica.valor * qntLiv;
                     printf("%d Livros disponiveis de Fisica\n", Fisica.disponivel);
                     break;
                 case 4:
-                    carrinho += 1;
-                    printf("\n%d item(s) no carrinho\n", carrinho);
-                    Quimica.disponivel -= 1;
-                    Quimica.vendido += 1;
-                    valorDaCompra += Quimica.valor;
+                    carrinho += qntLiv;
+                    printf("Venda efetivada!");
+                    Quimica.disponivel -= qntLiv;
+                    Quimica.vendido += qntLiv;
+                    valorDaCompra += Quimica.valor * qntLiv;
                     printf("%d Livros disponiveis de Quimica\n", Quimica.disponivel);
                     break;
                 case 5:
-                    carrinho += 1;
-                    printf("\n%d item(s) no carrinho\n", carrinho);
-                    Computacao.disponivel -= 1;
-                    Computacao.vendido += 1;
-                    valorDaCompra += Computacao.valor;
+                    carrinho += qntLiv;
+                    printf("Venda efetivada!");
+                    Computacao.disponivel -= qntLiv;
+                    Computacao.vendido += qntLiv;
+                    valorDaCompra += Computacao.valor * qntLiv;
                     printf("%d Livros disponiveis de Computacao\n", Computacao.disponivel);
                     break;
                 
