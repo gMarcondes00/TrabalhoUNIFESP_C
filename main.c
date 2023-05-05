@@ -137,7 +137,7 @@ int main() {
         desc(idInput);
         
         //Iniciar processo de compra
-        int entrarCompra;int idCompra; bool comprar = false; float valorDaCompra; int carrinho = 0;int qntLiv;
+        int entrarCompra;int idCompra; bool comprar = false; float valorDaCompra; int carrinho = 0;int qntLiv = 0;
 
         printf("\nGostaria de entrar na compra? 1 ou 0\n");
         scanf("%d", &entrarCompra);
@@ -148,8 +148,11 @@ int main() {
         while (comprar){
             printf("\nQual livro gostaria de comprar? Para finalizar a compra, digite 0!\n");
             scanf("%d", &idCompra);
-            printf("Quantos livros?\n");
-            scanf("%d", &qntLiv);
+            if(idCompra > 0 && idCompra < 6) {
+                printf("Quantos livros?\n");
+                scanf("%d", &qntLiv);
+            }
+
             if((idCompra == Matematica.id && Matematica.disponivel < qntLiv) ||
                (idCompra == Quimica.id && Quimica.disponivel < qntLiv) ||
                (idCompra == Fisica.id && Fisica.disponivel < qntLiv) ||
