@@ -19,7 +19,7 @@ struct Livro Quimica;
 struct Livro Computacao;
 
 //2) Mostrar a descrição da categoria
-void desc(int id) {
+int desc(int id) {
     //Path Matematica
     FILE *descMat = fopen("matematica.txt", "r");
     
@@ -82,6 +82,7 @@ void desc(int id) {
         scanf("%d", &idInput2);
         desc(idInput2);
     } 
+    return 0;
 }
 
 int main() {

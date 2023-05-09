@@ -1,2 +1,2 @@
     "Quimica Geral" - Livro que aborda de maneira geral a quimica. Principalmente nos temas: atomos, moleculas e reacoes quimicas diversas.
-    "Quimica Orgânica" - Livro que aborda a quimica organica, desde a formacao das moleculas e estrutura de compostos organicos.
+    "Quimica Organica" - Livro que aborda a quimica organica, desde a formacao das moleculas e estrutura de compostos organicos.
